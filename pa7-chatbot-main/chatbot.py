@@ -8,6 +8,7 @@ import util
 from pydantic import BaseModel, Field
 
 import numpy as np
+import re
 
 
 # noinspection PyMethodMayBeStatic
@@ -216,7 +217,9 @@ class Chatbot:
         pre-processed with preprocess()
         :returns: list of movie titles that are potentially in the text
         """
-        return []
+        simple_pattern = '(.*?)'
+        movies = re.findall(simple_pattern, preprocessed_input)
+        return movies
 
     def find_movies_by_title(self, title):
         """ Given a movie title, return a list of indices of matching movies.

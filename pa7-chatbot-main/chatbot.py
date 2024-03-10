@@ -246,26 +246,25 @@ class Chatbot:
         for article in articles:
             if title_list[0] == article:
                 title_list.remove(article)
-                pattern = re.compile('(\d\d\d\d)')
-                index = len(title_list) - 2
+                index = len(title_list) - 1
                 #accounts for inserting the article before the date if there's a date
-                if pattern.match(title_list[len(title_list)-1]):
+                if (re.match(r"\(\d\d\d\d\)", title_list[len(title_list)-1]) != None):
                     index -= 1
                 title_list[index] = title_list[index] + ","
-                title_list.insert(article, index)
+                title_list.insert(index+1, article)
                 break
 
         #search for the one instance if there's a date in the title
-        for i, movie in enumerate(self.titles):
+        for i, entry in enumerate(self.titles):
+            movie = entry[0]
             movie_list = list(movie.split(" "))
             if movie_list == title_list:
                 result.append(i)
             #checks for multiple date matches if input has no date
-            if not title.test('(\d\d\d\d)'):
+            if not re.match(r'\(\d\d\d\d\)', title_list[(len(title_list)-1)]):
                 mod_movie_list = movie_list[:(len(movie_list)-1)]
                 if (mod_movie_list == title_list):
-                    pattern = re.compile('(\d\d\d\d)')
-                    if pattern.match(movie_list[(len(movie_list)-1)]):
+                    if re.match(r'\(\d\d\d\d\)', movie_list[(len(movie_list)-1)]):
                         result.append(i)
             
         return result

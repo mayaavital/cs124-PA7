@@ -238,23 +238,36 @@ class Chatbot:
         :param title: a string containing a movie title
         :returns: a list of indices of matching movies
         """
-        #move around the article
+    
         articles = ['A', 'An', 'The']
         title_list = list(title.split(" "))
-        if title.test('(\d\d\d\d)'):
-            #search for the one instance of the movie
-            for article in articles:
-                if title_list[0] == article:
-                    title_list.remove(article)
-                    title_list.insert(article, len(title_list) - 2)
-                    break
-        else:
-            #return all instances of the movie
+        result = []
+        #move around the article
+        for article in articles:
+            if title_list[0] == article:
+                title_list.remove(article)
+                pattern = re.compile('(\d\d\d\d)')
+                index = len(title_list) - 2
+                if pattern.match(title_list[len(title_list)-1]):
+                    index -= 1
+                title_list[index] = title_list[index] + ","
+                title_list.insert(article, index)
+                break
+
+        #search for the one instance if there's a date in the title
+        for i, movie in enumerate(self.titles):
+            movie_list = list(movie.split(" "))
+            if movie_list == title_list:
+                result.append(i)
+            #checks for multiple date matches if input has no date
+            if not title.test('(\d\d\d\d)'):
+                mod_movie_list = movie_list[:(len(movie_list)-1)]
+                if (mod_movie_list == title_list):
+                    pattern = re.compile('(\d\d\d\d)')
+                    if pattern.match(movie_list[(len(movie_list)-1)]):
+                        result.append(i)
             
-        # self.titles is the list of titles to loop through
-
-
-        return []
+        return result
 
     def extract_sentiment(self, preprocessed_input):
         """Extract a sentiment rating from a line of pre-processed text.
@@ -414,3 +427,4 @@ if __name__ == '__main__':
     print('To run your chatbot in an interactive loop from the command line, '
           'run:')
     print('    python3 repl.py')
+

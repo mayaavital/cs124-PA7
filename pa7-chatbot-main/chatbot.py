@@ -248,6 +248,7 @@ class Chatbot:
                 title_list.remove(article)
                 pattern = re.compile('(\d\d\d\d)')
                 index = len(title_list) - 2
+                #accounts for inserting the article before the date if there's a date
                 if pattern.match(title_list[len(title_list)-1]):
                     index -= 1
                 title_list[index] = title_list[index] + ","

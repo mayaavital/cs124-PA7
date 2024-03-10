@@ -21,7 +21,6 @@ class Chatbot:
         self.name = 'moviebot'
 
         self.llm_enabled = llm_enabled
-
         # This matrix has the following shape: num_movies x num_users
         # The values stored in each row i and column j is the rating for
         # movie i by user j
@@ -239,6 +238,22 @@ class Chatbot:
         :param title: a string containing a movie title
         :returns: a list of indices of matching movies
         """
+        #move around the article
+        articles = ['A', 'An', 'The']
+        title_list = list(title.split(" "))
+        if title.test('(\d\d\d\d)'):
+            #search for the one instance of the movie
+            for article in articles:
+                if title_list[0] == article:
+                    title_list.remove(article)
+                    title_list.insert(article, len(title_list) - 2)
+                    break
+        else:
+            #return all instances of the movie
+            
+        # self.titles is the list of titles to loop through
+
+
         return []
 
     def extract_sentiment(self, preprocessed_input):

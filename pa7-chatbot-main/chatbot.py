@@ -33,7 +33,8 @@ class Chatbot:
 
         # Binarize the movie ratings before storing the binarized matrix.
         self.ratings = ratings
-        self.binarized_ratings = self.binarize(self.ratings, threshold=2.5)
+        #self.binarized_ratings = self.binarize(self.ratings, threshold=2.5)
+        self.ratings = self.binarize(self.ratings, threshold=2.5)
         ########################################################################
         #                             END OF YOUR CODE                         #
         ########################################################################
@@ -389,6 +390,24 @@ class Chatbot:
 
         # Populate this list with k movie indices to recommend to the user.
         recommendations = []
+        predicted_ratings = []
+        for i in range(len(user_ratings)):
+            if user_ratings[i] == 0:
+                cur_rating = 0
+                for j in range(len(user_ratings)):
+                    if user_ratings[j] != 0:
+                        dot_prod = np.dot(ratings_matrix[i], ratings_matrix[j])
+                        denom = np.linalg.norm(ratings_matrix[i]) * np.linalg.norm(ratings_matrix[j])
+                        if denom == 0:
+                            sim = 0
+                        else: 
+                            sim = dot_prod/denom
+                        cur_rating += (sim*user_ratings[j])
+                predicted_ratings.append((i, cur_rating))
+        sorted_pr = sorted(predicted_ratings, key=lambda x:x[1], reverse=True)
+        for i in range(k):
+            recommendations.append(sorted_pr[i][0])
+
 
         ########################################################################
         #                        END OF YOUR CODE                              #

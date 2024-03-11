@@ -216,8 +216,7 @@ class Chatbot:
         pre-processed with preprocess()
         :returns: list of movie titles that are potentially in the text
         """
-        simple_pattern = '(.*?)'
-        movies = re.findall(simple_pattern, preprocessed_input)
+        movies = re.findall(r'\"(.*?)\"', preprocessed_input)
         return movies
 
     def find_movies_by_title(self, title):

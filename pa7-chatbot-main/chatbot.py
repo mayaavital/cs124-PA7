@@ -33,6 +33,7 @@ class Chatbot:
 
         # Binarize the movie ratings before storing the binarized matrix.
         self.ratings = ratings
+        self.binarized_ratings = self.binarize(self.ratings, threshold=2.5)
         ########################################################################
         #                             END OF YOUR CODE                         #
         ########################################################################
@@ -318,7 +319,7 @@ class Chatbot:
         #                                                                      #
         # WARNING: Do not use self.ratings directly in this function.          #
         ########################################################################
-        
+
         binarized_ratings = np.zeros_like(ratings)
         binarized_ratings[ratings > threshold] = 1
         binarized_ratings[(ratings <= threshold)&(ratings > 0)] = -1

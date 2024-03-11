@@ -154,7 +154,6 @@ class Chatbot:
         # your implementation to do any generic preprocessing, feel free to    #
         # leave this method unmodified.                                        #
         ########################################################################
-
         ########################################################################
         #                             END OF YOUR CODE                         #
         ########################################################################
@@ -286,11 +285,22 @@ class Chatbot:
         pre-processed with preprocess()
         :returns: a numerical value for the sentiment of the text
         """
+        value = 0
         input = re.sub(r'\"(.*?)\"', "", preprocessed_input)
-        #for word in input:
-          #  if word in self.sentiment:
-
-        return 0
+        input_list = list(input.split(" "))
+        print(input_list)
+        for word in input_list:
+            if word in self.sentiment:
+                if self.sentiment[word] == "pos":
+                    value += 1
+                else:
+                    value -= 1
+        if value > 0:
+            return 1
+        elif value < 0:
+            return -1
+        else:
+            return 0
 
     ############################################################################
     # 3. Movie Recommendation helper functions                                 #

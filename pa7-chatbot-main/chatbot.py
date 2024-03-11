@@ -284,6 +284,10 @@ class Chatbot:
         pre-processed with preprocess()
         :returns: a numerical value for the sentiment of the text
         """
+        input = re.sub(r'\"(.*?)\"', "", preprocessed_input)
+        #for word in input:
+          #  if word in self.sentiment:
+
         return 0
 
     ############################################################################
@@ -314,10 +318,13 @@ class Chatbot:
         #                                                                      #
         # WARNING: Do not use self.ratings directly in this function.          #
         ########################################################################
+        
+        binarized_ratings = np.zeros_like(ratings)
+        binarized_ratings[ratings > threshold] = 1
+        binarized_ratings[(ratings <= threshold)&(ratings > 0)] = -1
 
         # The starter code returns a new matrix shaped like ratings but full of
         # zeros.
-        binarized_ratings = np.zeros_like(ratings)
 
         ########################################################################
         #                        END OF YOUR CODE                              #

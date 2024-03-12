@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field
 import numpy as np
 import re
 
+from porter_stemmer import PorterStemmer
 
 # noinspection PyMethodMayBeStatic
 class Chatbot:
@@ -19,7 +20,7 @@ class Chatbot:
         # The chatbot's default name is `moviebot`.
         # TODO: Give your chatbot a new name.
         self.name = 'moviebot'
-
+        self.stemmer = PorterStemmer()
         self.llm_enabled = llm_enabled
         # This matrix has the following shape: num_movies x num_users
         # The values stored in each row i and column j is the rating for
@@ -288,13 +289,33 @@ class Chatbot:
         value = 0
         input = re.sub(r'\"(.*?)\"', "", preprocessed_input)
         input_list = list(input.split(" "))
-        print(input_list)
+        negation_list = ["don't", "never", "not", "didn't"]
+        i = 0
+
+        stemmed_input_list = []
         for word in input_list:
+            new_word = self.stemmer.stem(word, 0, len(word) - 1)
+            if new_word == "enjoi":
+                new_word = "enjoy"
+            stemmed_input_list.append(new_word)
+
+
+        for word in stemmed_input_list:
             if word in self.sentiment:
                 if self.sentiment[word] == "pos":
                     value += 1
                 else:
                     value -= 1
+            if word in negation_list:
+                i+= 1
+                for n in range(i, len(stemmed_input_list)):
+                    if stemmed_input_list[n] in self.sentiment:
+                        if self.sentiment[stemmed_input_list[n]] == "pos":
+                            value -= 1
+                        else:
+                            value += 1
+                break
+            i += 1
         if value > 0:
             return 1
         elif value < 0:

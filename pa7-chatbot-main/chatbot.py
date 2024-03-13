@@ -377,11 +377,17 @@ class Chatbot:
         ########################################################################
         # TODO: Compute cosine similarity between the two vectors.             #
         ########################################################################
-        similarity = 0
+        sim = 0
+        dot_prod = np.dot(u,v)
+        denom = np.linalg.norm(u) * np.linalg.norm(v)
+        if denom == 0:
+            sim = 0
+        else:
+            sim = dot_prod / denom
         ########################################################################
         #                          END OF YOUR CODE                            #
         ########################################################################
-        return similarity
+        return sim
 
     def recommend(self, user_ratings, ratings_matrix, k=10, llm_enabled=False):
         """Generate a list of indices of movies to recommend using collaborative

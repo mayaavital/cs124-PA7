@@ -299,8 +299,8 @@ class Chatbot:
 
         emotions = []
 
-        for emotion in response.items():
-            if response.emotion == True:
+        for emotion, value in response.items():
+            if value:
                 emotions.append(emotion)
 
         return emotions

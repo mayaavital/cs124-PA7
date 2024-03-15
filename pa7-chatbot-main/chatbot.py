@@ -299,7 +299,7 @@ class Chatbot:
         
         
         if self.llm_enabled:
-            system_prompt = "You are an emotion detection bot. Read the sentence and identify the predominant emotion expressed: anger, disgust, fear, happiness, sadness, or surprise. Respond with a JSON object indicating the detected emotion."
+            system_prompt = "You are an emotion detection bot. Read the sentence and identify the predominant emotion or emotions expressed: anger, disgust, fear, happiness, sadness, or surprise. Respond with a JSON object indicating the detected emotion or emotions. If you detect multiple emotions, respond accordingly."
             message = preprocessed_input
             json_class = EmotionDetector
             response = util.json_llm_call(system_prompt, message, json_class)

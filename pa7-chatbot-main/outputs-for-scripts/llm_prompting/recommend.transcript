@@ -28,34 +28,42 @@ Welcome to Stanford CS124's
 [96mmoviebot> [0m Great, you liked "Titanic (1997)". Can you tell me about another movie you like or dislike? I'm here to talk about movies! Let's discuss your favorite films or genres.
 > I liked "10 Things I Hate About You"
 
-[96mmoviebot> [0m I see, you liked "10 Things I Hate About You". That's great! You've now mentioned 2 different movies. I'm here to help you discover new movies you might enjoy. Can you tell me about another movie you like or dislike?
+[96mmoviebot> [0m I see, you liked "10 Things I Hate About You". That's great! You've now mentioned 2 different movies. Keep them coming, and I'll do my best to help you discover new movies you might enjoy. Can you tell me about another movie you like or dislike? I'm here to talk about movies! Let's discuss your favorite films or genres.
 > I liked "She's the Man"
 
-[96mmoviebot> [0m  Interesting, you liked "She's the Man". You've now mentioned 3 different movies. I'm here to help you discover new movies you might enjoy. Can you tell me about another movie you like or dislike? 
+[96mmoviebot> [0m  Interesting, you liked "She's the Man". You've now mentioned 3 different movies. I'm here to help you discover new movies you might enjoy. Can you tell me about another movie you like or dislike? I'm here to talk about movies! Let's discuss your favorite films or genres. 
 
 By the way, after you mention 5 different movies, I will proactively offer a recommendation based on those.
 > I liked "Sydney White"
 
-[96mmoviebot> [0m  I see, you liked "Sydney White". You've now mentioned 4 different movies. I'm here to help you discover new movies you might enjoy. Can you tell me about another movie you like or dislike? 
+[96mmoviebot> [0m  I see, you liked "Sydney White". You've now mentioned 4 different movies. I'm here to help you discover new movies you might enjoy. Can you tell me about another movie you like or dislike? I'm here to talk about movies! Let's discuss your favorite films or genres. 
 
-Just one more movie and I'll be able to offer you a recommendation based on your preferences. 😊
+We're getting close to the point where I can offer a recommendation based on the movies you've mentioned. Keep it up!
 > I liked "Easy A"
 
-[96mmoviebot> [0m  Now that you've told me about 5 movies, would you like a recommendation based on those? I think you might enjoy "The DUFF" (2015). It's a comedy-drama film about a high school student who is labeled as the "Designated Ugly Fat Friend" and decides to take revenge on her bullies. The movie has a similar tone and style to "Easy A" and "10 Things I Hate About You", and I think you might find it entertaining. Would you like to watch "The DUFF"?
+[96mmoviebot> [0m  Great, you liked "Easy A". You've now mentioned 5 different movies. Based on the movies you've mentioned, I think you might enjoy "The DUFF" (2015). It's a comedy-drama film about a high school student who is labeled as the "DUFF" (Designated Ugly Fat Friend) by her more popular friends. She decides to take revenge and turn the tables on her tormentors. The movie has a similar tone and themes as the movies you mentioned and has received positive reviews. Would you like a recommendation based on those?
 > yes
 
-[96mmoviebot> [0m  Great, I'm glad you're interested in watching "The DUFF"! It's a fun and entertaining movie that I think you'll enjoy. Let me know if you need any help finding it or if you have any other questions about movies. 😊
+[96mmoviebot> [0m  Based on the five movies you've mentioned, I would recommend "The DUFF" (2015). It's a comedy-drama film about a high school student who is labeled as the "DUFF" (Designated Ugly Fat Friend) by her more popular friends. She decides to take revenge and turn the tables on her tormentors. The movie has a similar tone and themes as the movies you mentioned and has received positive reviews. I hope you enjoy it!
+
+By the way, feel free to share more movies you like or dislike, and I'll do my best to help you discover new movies you might enjoy.
 > yeah!
 
-[96mmoviebot> [0m   I'm glad to hear that! I hope you enjoy watching "The DUFF". If you have any other questions or if there's anything else I can help you with, just let me know. I'm here to assist you with all your movie-related needs. 😊
+[96mmoviebot> [0m   I'm glad you're excited! Do you have another movie you'd like to share, or is there something specific you'd like to know about "The DUFF" (2015) or any of the other movies you mentioned? I'm here to help you with any movie-related questions or conversations you'd like to have. 
+
+Also, if you have any other preferences or criteria for movie recommendations, feel free to let me know. I'm here to help you discover new movies you might enjoy.
 > yes
 
-[96mmoviebot> [0m   Sure thing! I'm here to help. Do you have any specific questions about "The DUFF" or are you looking for recommendations for other movies? Let me know and I'll do my best to assist you. 😊
+[96mmoviebot> [0m   I'm glad to hear that! Do you have another movie you'd like to share, or is there something specific you'd like to know about "The DUFF" (2015) or any of the other movies you mentioned? 
+
+If you have any other preferences or criteria for movie recommendations, feel free to let me know. For example, you can tell me your favorite genre, director, actor, or any other specific preference you have, and I'll do my best to provide personalized recommendations. 
+
+Additionally, if you have any questions about movies in general, such as trivia, behind-the-scenes facts, or anything else, feel free to ask! I'm here to help you with any movie-related questions or conversations you'd like to have.
 > no
 
-[96mmoviebot> [0m    No problem! I'm glad I could help you find a movie you might enjoy. If you have any other questions or if there's anything else I can help you with, just let me know. I'm here to assist you with all your movie-related needs. 😊 
+[96mmoviebot> [0m    No problem! I'm here if you change your mind or have any other questions or topics related to movies. Don't hesitate to reach out if you want to talk about movies, discover new films, or learn more about the world of cinema. 
 
-Have a great day!
+In the meantime, I hope you enjoy "The DUFF" (2015) or any of the other movies we discussed. Have a great day!
 > :quit
 
 [96mmoviebot> [0mHave a nice day!

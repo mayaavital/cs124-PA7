@@ -25,19 +25,19 @@ Welcome to Stanford CS124's
 [96mmoviebot> [0mHow can I help you?
 > I saw "Titanic (1997)"
 
-[96mmoviebot> [0mI'm not entirely certain if you're fond of Titanic (1997). Could you provide further insights or feelings you have towards it?
+[96mmoviebot> [0mI'm sorry, I'm not sure if you liked Titanic (1997). Tell me more about it.
 > I like "Titanic".
 
-[96mmoviebot> [0mCan you please repeat what you said about one of these specific movies: ['Titanic (1997)', 'Titanic (1953)']?
+[96mmoviebot> [0mCan you specify your statement between ['Titanic (1997)', 'Titanic (1953)']?
 > I thought "Fictional Title That Doesn't Exist in Your Database (1220)" was a really great movie.
 
-[96mmoviebot> [0mI'm not familiar with Fictional Title That Doesn't Exist in Your Database (1220), sorry about that. Can you tell me about another movie you're fond of?
+[96mmoviebot> [0mSomething like: I've never heard of Fictional Title That Doesn't Exist in Your Database (1220), sorry... Tell me about another movie you liked.
 > I loved zootopia
 
-[96mmoviebot> [0mHmm, I didn't catch a movie title in what you said. Could you share some details about a recent movie you've seen?
+[96mmoviebot> [0mI'm not recognizing a movie title in what you said. Can you tell me about a film you've seen recently?
 > I liked both "Zootopia" and "Titanic (1997)".
 
-[96mmoviebot> [0mPlease tell me about one movie at a time. Go ahead.
+[96mmoviebot> [0mCould you share details about one movie first? Feel free to start whenever you're ready.
 > :quit
 
 [96mmoviebot> [0mHave a nice day!

@@ -28,19 +28,19 @@ Welcome to Stanford CS124's
 [96mmoviebot> [0mOk, you liked Titanic (1997)! Tell me what you thought of another movie.
 > I liked "10 Things I Hate About You"
 
-[96mmoviebot> [0mOk, you liked 10 Things I Hate About You! Tell me what you thought of another movie.
+[96mmoviebot> [0mGot it, you liked 10 Things I Hate About You! Now, could you discuss your thoughts on another film?
 > I liked "She's the Man"
 
-[96mmoviebot> [0mGot it, you liked She's the Man! Now, could you discuss your thoughts on another film?
+[96mmoviebot> [0mOk, you liked She's the Man! Tell me what you thought of another movie.
 > I liked "Sydney White"
 
-[96mmoviebot> [0mOk, you liked Sydney White! Tell me what you thought of another movie.
+[96mmoviebot> [0mAlright, you enjoyed Sydney White! How about sharing your thoughts on a different movie?
 > I liked "Easy A"
 
 [96mmoviebot> [0mFrom what you've shared, it appears that Whatever It Takes (2000) aligns well with your tastes. Are you open to receiving additional recommendations? Please respond with either 'yes' or 'no'.
 > yes
 
-[96mmoviebot> [0mFrom what you've shared, it appears that Lizzie McGuire Movie, The (2003) aligns well with your tastes. Are you open to receiving additional recommendations? Please respond with either 'yes' or 'no'.
+[96mmoviebot> [0mGiven what you told me, I think you would like Lizzie McGuire Movie, The (2003). Would you like more recommendations? Please respond with either 'yes' or 'no'.
 > yeah!
 
 [96mmoviebot> [0mPlease respond with either 'yes' or 'no.
@@ -49,7 +49,7 @@ Welcome to Stanford CS124's
 [96mmoviebot> [0mFrom what you've shared, it appears that New York Minute (2004) aligns well with your tastes. Are you open to receiving additional recommendations? Please respond with either 'yes' or 'no'.
 > no
 
-[96mmoviebot> [0mOk, since you don't want more recommendations, tell me what you thought about more movies please.
+[96mmoviebot> [0mOk, would you like to tell me about more movies?
 > :quit
 
 [96mmoviebot> [0mHave a nice day!

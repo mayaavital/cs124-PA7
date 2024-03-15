@@ -13,6 +13,14 @@ import random
 
 from porter_stemmer import PorterStemmer
 
+class EmotionDetector(BaseModel):
+    Anger: bool = Field(default=False)
+    Disgust: bool = Field(default=False)
+    Fear: bool = Field(default=False)
+    Happiness: bool = Field(default=False)
+    Sadness: bool = Field(default=False)
+    Surprise: bool = Field(default=False)
+
 # noinspection PyMethodMayBeStatic
 class Chatbot:
     """Simple class to implement the chatbot for PA 7."""
@@ -90,7 +98,7 @@ class Chatbot:
         ########################################################################
 
         system_prompt = """Your name is moviebot. You are a specialized movie recommender chatbot. """ +\
-    """Your core mission is to help users discover movies they'll love based on their preferences. When users share their """ +\
+    """Your core mission is to help users discover movies they'll like based on their preferences. When users share their """ +\
     """thoughts or feelings about movies, like saying: 'I enjoyed "The Notebook"', you should acknowledge their sentiment """ +\
     """by responding with understanding, such as: 'Great, you enjoyed "The Notebook"! Can you tell me about another movie you like or dislike?'. """ +\
     """You are programmed to stay focused on movies; if asked about unrelated topics, immediately politely redirect the conversation. """ +\
@@ -274,7 +282,18 @@ class Chatbot:
         :returns: a list of emotions in the text or an empty list if no emotions found.
         Possible emotions are: "Anger", "Disgust", "Fear", "Happiness", "Sadness", "Surprise"
         """
-        return []
+        system_prompt = "You are an emotion detection bot. Read the sentence and identify the predominant emotion expressed: anger, disgust, fear, happiness, sadness, or surprise. Respond with a JSON object indicating the detected emotion."
+        message = sentence
+        json_class = EmotionDetector
+        response = util.json_llm_call(system_prompt, message, json_class)
+
+        emotions = []
+
+        for emotion in response.items():
+            if response.emotion == True:
+                emotions.append(emotion)
+
+        return emotions
 
     def extract_titles(self, preprocessed_input):
         """Extract potential movie titles from a line of pre-processed text.

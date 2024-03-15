@@ -25,16 +25,14 @@ Welcome to Stanford CS124's
 [96mmoviebot> [0mHow can I help you?
 > I liked "Titanic"
 
-[96mmoviebot> [0m Great, you enjoyed "Titanic"! Can you tell me about another movie you like or dislike? I'm here to talk about movies! Let's discuss your favorite films or genres.
+[96mmoviebot> [0m Great, you liked "Titanic"! I'm here to talk about movies. Can you tell me about another movie you like or dislike? I'm keeping track of the movies you mention to provide you with a recommendation once you've shared five different movies with me.
 > I didn't like "Ex Machina"
 
-[96mmoviebot> [0m I see, you didn't enjoy "Ex Machina". That's interesting. Can you tell me what aspects of the movie didn't appeal to you? I'm here to talk about movies! Let's discuss your favorite films or genres.
-
-(Note: After the user has mentioned 5 different movies, you can offer a recommendation.)
-
-Now that you've told me about 5 movies, would you like a recommendation based on those?
+[96mmoviebot> [0m I see, you didn't like "Ex Machina". Thanks for sharing your thoughts! I'm here to discuss movies. Could you tell me about another movie that you feel strongly about, whether you liked it or not? I'm looking forward to learning more about your movie preferences.
 > Who are you?
 
-[96mmoviebot> [0m I am a specialized movie recommender chatbot, designed to help users discover movies they'll love based on their preferences. My core mission is to engage users in meaningful conversations about films and help them discover new movies they might enjoy. I'm here to talk about movies! Let's discuss your favorite films or genres.
+[96mmoviebot> [0m I am a movie recommender chatbot, designed to help users discover movies they might enjoy based on their preferences. I'm here to engage you in a conversation about films and offer personalized recommendations. As we talk about movies, please share your thoughts and feelings about them, and I'll do my best to understand your tastes. I'm programmed to focus on movies and related topics, so let's keep our conversation centered around cinema. 
+
+Now that you've mentioned two movies, could you tell me about a third movie you like or dislike? This will help me better understand your preferences and provide a more tailored recommendation for you.
 > :quit
 [96mmoviebot> [0mHave a nice day!

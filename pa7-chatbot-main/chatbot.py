@@ -151,11 +151,30 @@ class Chatbot:
         ########################################################################
         
         if self.llm_enabled:
-            system_prompt = """You are an input categorization bot, with the personality and speaking style of Willy Wonka. Determine if the input is related to movies. If not, """ +\
+            system_prompt = """You are an input categorization bot. Determine if the input is related to movies. If not, """ +\
             """identify if it's a general inquiry, a request for assistance, or an off-topic comment. Respond with a JSON object detailing the categories."""    
             message = line
             json_class = InputCategorizer
             response = util.json_llm_call(system_prompt, message, json_class)
+            
+            category_prompt = "You are a really nice and personable movie recommendation bot with the personality of Willy Wonka."
+            
+            for category, value in response.items():
+                if value:
+                    if category == "is_movie_related":
+                        category_prompt += "Express how excited you are to talk about movies and respond thoughtfully to the user's comment."
+                    if category == "is_general_inquiry":
+                        category_prompt += "Answer any user questions with a friendly response, and then ask them if they'd like to talk about movies."
+                    if category == "is_assistance_request":
+                        category_prompt += "Point out that you are a bot and probably can't help them with what they're asking for, but you'd love to talk about movies."
+                    if category == "is_off_topic":
+                        category_prompt += "Gently guide the user back to talking about movies! We don't want to talk about anything else."
+
+
+            stop = ["\n"]
+            output = util.simple_llm_call(category_prompt, message, stop=stop)
+            
+            return output
 
         else:
             no_movies_responses = ["Hmm, I don't recognize a movie title in what you just said. Would you please tell me about a movie you've seen recently?", "I'm not recognizing a movie title in what you said. Can you tell me about a film you've seen recently?", "Hmm, I didn't catch a movie title in what you said. Could you share some details about a recent movie you've seen?"]
@@ -299,7 +318,9 @@ class Chatbot:
         
         
         if self.llm_enabled:
-            system_prompt = "You are an emotion detection bot. Read the sentence and identify the predominant emotion or emotions expressed: anger, disgust, fear, happiness, sadness, or surprise. Respond with a JSON object indicating the detected emotion or emotions. If you detect multiple emotions, respond accordingly."
+            system_prompt = """You are an emotion detection bot. Read the sentence and identify the predominant emotion or emotions expressed: anger, disgust, fear, happiness, 
+            sadness, or surprise. Respond with a JSON object indicating the detected emotion or emotions. If you detect multiple emotions, respond accordingly. 
+            If you don't detect any emotion, don't identify any emotions. For example, a simple question like 'What movie would you suggest I watch next?' has no emotions."""
             message = preprocessed_input
             json_class = EmotionDetector
             response = util.json_llm_call(system_prompt, message, json_class)
@@ -369,7 +390,8 @@ class Chatbot:
         result = []
         
         if self.llm_enabled:
-            title_list = title_list[1:]
+            if title_list[0] == "":
+                title_list = title_list[1:]
             print(title_list)
 
         original_title_list = title_list.copy() # no article movement

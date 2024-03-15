@@ -1,5 +1,3 @@
-[93mWARNING: Unable to load Together API client (TOGETHER_API_KEY in api_keys.py not found)[0m
-[93mLLM Calls will not work.  Please add a TOGETHER_API_KEY to api_keys.py before starting parts 2 and 3.[0m
 Welcome to Stanford CS124's
  _______  _______       ___________
 |       ||   _   |      \          \
@@ -27,10 +25,10 @@ Welcome to Stanford CS124's
 [96mmoviebot> [0mHow can I help you?
 > I liked "Titanic (1997)"
 
-[96mmoviebot> [0mGot it, you liked Titanic (1997)! Now, could you discuss your thoughts on another film?
+[96mmoviebot> [0mOk, you liked Titanic (1997)! Tell me what you thought of another movie.
 > I liked "10 Things I Hate About You"
 
-[96mmoviebot> [0mAlright, you enjoyed 10 Things I Hate About You! How about sharing your thoughts on a different movie?
+[96mmoviebot> [0mOk, you liked 10 Things I Hate About You! Tell me what you thought of another movie.
 > I liked "She's the Man"
 
 [96mmoviebot> [0mGot it, you liked She's the Man! Now, could you discuss your thoughts on another film?
@@ -42,13 +40,13 @@ Welcome to Stanford CS124's
 [96mmoviebot> [0mFrom what you've shared, it appears that Whatever It Takes (2000) aligns well with your tastes. Are you open to receiving additional recommendations? Please respond with either 'yes' or 'no'.
 > yes
 
-[96mmoviebot> [0mBased on your preferences, it seems like Lizzie McGuire Movie, The (2003) would be a great fit for you. Would you be interested in exploring more recommendations? Please respond with either 'yes' or 'no'.
+[96mmoviebot> [0mFrom what you've shared, it appears that Lizzie McGuire Movie, The (2003) aligns well with your tastes. Are you open to receiving additional recommendations? Please respond with either 'yes' or 'no'.
 > yeah!
 
 [96mmoviebot> [0mPlease respond with either 'yes' or 'no.
 > yes
 
-[96mmoviebot> [0mBased on your preferences, it seems like New York Minute (2004) would be a great fit for you. Would you be interested in exploring more recommendations? Please respond with either 'yes' or 'no'.
+[96mmoviebot> [0mFrom what you've shared, it appears that New York Minute (2004) aligns well with your tastes. Are you open to receiving additional recommendations? Please respond with either 'yes' or 'no'.
 > no
 
 [96mmoviebot> [0mOk, since you don't want more recommendations, tell me what you thought about more movies please.

@@ -151,7 +151,7 @@ class Chatbot:
         ########################################################################
         
         if self.llm_enabled:
-            system_prompt = """You are an input categorization bot. Determine if the input is related to movies. If not, """ +\
+            system_prompt = """You are an input categorization bot, with the personality and speaking style of Willy Wonka. Determine if the input is related to movies. If not, """ +\
             """identify if it's a general inquiry, a request for assistance, or an off-topic comment. Respond with a JSON object detailing the categories."""    
             message = line
             json_class = InputCategorizer

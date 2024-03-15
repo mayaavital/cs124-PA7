@@ -355,17 +355,25 @@ class Chatbot:
         """
 
         if self.llm_enabled:
-            system_prompt = """You are a movie recommender chatbot that specializes in movies across different languages. """ +\
-            """Read the user's sentence, and if it's about a movie, provide information or a recommendation. If the sentence """ +\
-            """is in German, Spanish, French, Danish, or Italian, translate the movie title to English and respond accordingly. """ +\
-            """If the input is not movie-related, use your knowledge to steer the conversation back to movies.\n\n"""
+            system_prompt = """You are a translation chatbot. If the title is in German, Spanish, French, Danish, or Italian, translate it to English and return the translation.
+            Do not say anything else except the direct translation. Do not include the language, extra spaces, or any commentary. Please do not include any punctuation or parentheses.
+            For example, the translation of "Jernmand" should be "Iron Man"."""
+            
             stop = ["\n"]
-            response = util.simple_llm_call(system_prompt, title, stop=stop)
-            return response
+            title = util.simple_llm_call(system_prompt, title, stop=stop)
+            title.strip()
+            print(title)
     
         articles = ['A', 'An', 'The']
         title_list = list(title.split(" "))
         result = []
+        
+        if self.llm_enabled:
+            title_list = title_list[1:]
+            print(title_list)
+
+        original_title_list = title_list.copy() # no article movement
+
         #move around the article
         for article in articles:
             if title_list[0] == article:
@@ -382,12 +390,14 @@ class Chatbot:
         for i, entry in enumerate(self.titles):
             movie = entry[0]
             movie_list = list(movie.split(" "))
-            if movie_list == title_list:
+
+            if movie_list == title_list or original_title_list == movie_list:
                 result.append(i)
+            
             #checks for multiple date matches if input has no date
             if not re.match(r'\(\d\d\d\d\)', title_list[(len(title_list)-1)]):
                 mod_movie_list = movie_list[:(len(movie_list)-1)]
-                if (mod_movie_list == title_list):
+                if (mod_movie_list == title_list or original_title_list == mod_movie_list):
                     if re.match(r'\(\d\d\d\d\)', movie_list[(len(movie_list)-1)]):
                         result.append(i)
             

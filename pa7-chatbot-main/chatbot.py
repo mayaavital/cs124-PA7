@@ -162,7 +162,7 @@ class Chatbot:
         if self.llm_enabled:
             system_prompt = """You are an input categorization bot. Determine if the input is related to movies. If not, """ +\
             """identify if it's a general inquiry, a request for assistance, or an off-topic comment. Respond with a JSON object detailing the categories."""    
-            message = sentence
+            message = line
             json_class = InputCategorizer
             response = util.json_llm_call(system_prompt, message, json_class)
         else:
@@ -293,7 +293,7 @@ class Chatbot:
         Possible emotions are: "Anger", "Disgust", "Fear", "Happiness", "Sadness", "Surprise"
         """
         system_prompt = "You are an emotion detection bot. Read the sentence and identify the predominant emotion expressed: anger, disgust, fear, happiness, sadness, or surprise. Respond with a JSON object indicating the detected emotion."
-        message = sentence
+        message = preprocessed_input
         json_class = EmotionDetector
         response = util.json_llm_call(system_prompt, message, json_class)
 
@@ -355,7 +355,7 @@ class Chatbot:
             """is in German, Spanish, French, Danish, or Italian, translate the movie title to English and respond accordingly. """ +\
             """If the input is not movie-related, use your knowledge to steer the conversation back to movies.\n\n"""
             stop = ["\n"]
-            response = util.simple_llm_call(system_prompt, sentence, stop=stop)
+            response = util.simple_llm_call(system_prompt, title, stop=stop)
             return response
     
         articles = ['A', 'An', 'The']

@@ -1,0 +1,45 @@
+[93mWARNING: Unable to load Together API client (TOGETHER_API_KEY in api_keys.py not found)[0m
+[93mLLM Calls will not work.  Please add a TOGETHER_API_KEY to api_keys.py before starting parts 2 and 3.[0m
+Welcome to Stanford CS124's
+ _______  _______       ___________
+|       ||   _   |      \          \
+|    _  ||  |_|  | ____  ------    /
+|   |_| ||       ||____|      /   /
+|    ___||       |           /   /       
+|   |    |   _   |          /   /      
+|___|    |__| |__|         /___/
+
+ _______  __   __  _______  _______  _______  _______  _______  __
+|       ||  | |  ||   _   ||       ||  _    ||       ||       ||  |
+|       ||  |_|  ||  |_|  ||_     _|| |_|   ||   _   ||_     _||  |
+|       ||       ||       |  |   |  |       ||  | |  |  |   |  |  |
+|      _||       ||       |  |   |  |  _   | |  |_|  |  |   |  |__|
+|     |_ |   _   ||   _   |  |   |  | |_|   ||       |  |   |   __
+|_______||__| |__||__| |__|  |___|  |_______||_______|  |___|  |__|
+
+
+        Your task is to implement the chatbot as detailed in the PA7
+        instructions.
+        Remember: in the GUS mode, movie names will come in quotation marks
+        and expressions of sentiment will be simple!
+        TODO: Write here the description for your own chatbot!
+        
+[96mmoviebot> [0mHow can I help you?
+> I saw "Titanic (1997)"
+
+[96mmoviebot> [0mI'm not entirely certain if you're fond of Titanic (1997). Could you provide further insights or feelings you have towards it?
+> I like "Titanic".
+
+[96mmoviebot> [0mPlease repeat your statement specifying between these movies: ['Titanic (1997)', 'Titanic (1953)']
+> I thought "Fictional Title That Doesn't Exist in Your Database (1220)" was a really great movie.
+
+[96mmoviebot> [0mSomething like: I've never heard of Fictional Title That Doesn't Exist in Your Database (1220), sorry... Tell me about another movie you liked.
+> I loved zootopia
+
+[96mmoviebot> [0mHmm, I don't recognize a movie title in what you just said. Would you please tell me about a movie you've seen recently?
+> I liked both "Zootopia" and "Titanic (1997)".
+
+[96mmoviebot> [0mCould you share details about one movie first? Feel free to start whenever you're ready.
+> :quit
+
+[96mmoviebot> [0mHave a nice day!

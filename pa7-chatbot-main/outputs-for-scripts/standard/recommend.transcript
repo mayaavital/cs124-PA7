@@ -1,0 +1,57 @@
+[93mWARNING: Unable to load Together API client (TOGETHER_API_KEY in api_keys.py not found)[0m
+[93mLLM Calls will not work.  Please add a TOGETHER_API_KEY to api_keys.py before starting parts 2 and 3.[0m
+Welcome to Stanford CS124's
+ _______  _______       ___________
+|       ||   _   |      \          \
+|    _  ||  |_|  | ____  ------    /
+|   |_| ||       ||____|      /   /
+|    ___||       |           /   /       
+|   |    |   _   |          /   /      
+|___|    |__| |__|         /___/
+
+ _______  __   __  _______  _______  _______  _______  _______  __
+|       ||  | |  ||   _   ||       ||  _    ||       ||       ||  |
+|       ||  |_|  ||  |_|  ||_     _|| |_|   ||   _   ||_     _||  |
+|       ||       ||       |  |   |  |       ||  | |  |  |   |  |  |
+|      _||       ||       |  |   |  |  _   | |  |_|  |  |   |  |__|
+|     |_ |   _   ||   _   |  |   |  | |_|   ||       |  |   |   __
+|_______||__| |__||__| |__|  |___|  |_______||_______|  |___|  |__|
+
+
+        Your task is to implement the chatbot as detailed in the PA7
+        instructions.
+        Remember: in the GUS mode, movie names will come in quotation marks
+        and expressions of sentiment will be simple!
+        TODO: Write here the description for your own chatbot!
+        
+[96mmoviebot> [0mHow can I help you?
+> I liked "Titanic (1997)"
+
+[96mmoviebot> [0mGot it, you liked Titanic (1997)! Now, could you discuss your thoughts on another film?
+> I liked "10 Things I Hate About You"
+
+[96mmoviebot> [0mAlright, you enjoyed 10 Things I Hate About You! How about sharing your thoughts on a different movie?
+> I liked "She's the Man"
+
+[96mmoviebot> [0mGot it, you liked She's the Man! Now, could you discuss your thoughts on another film?
+> I liked "Sydney White"
+
+[96mmoviebot> [0mOk, you liked Sydney White! Tell me what you thought of another movie.
+> I liked "Easy A"
+
+[96mmoviebot> [0mFrom what you've shared, it appears that Whatever It Takes (2000) aligns well with your tastes. Are you open to receiving additional recommendations? Please respond with either 'yes' or 'no'.
+> yes
+
+[96mmoviebot> [0mBased on your preferences, it seems like Lizzie McGuire Movie, The (2003) would be a great fit for you. Would you be interested in exploring more recommendations? Please respond with either 'yes' or 'no'.
+> yeah!
+
+[96mmoviebot> [0mPlease respond with either 'yes' or 'no.
+> yes
+
+[96mmoviebot> [0mBased on your preferences, it seems like New York Minute (2004) would be a great fit for you. Would you be interested in exploring more recommendations? Please respond with either 'yes' or 'no'.
+> no
+
+[96mmoviebot> [0mOk, since you don't want more recommendations, tell me what you thought about more movies please.
+> :quit
+
+[96mmoviebot> [0mHave a nice day!

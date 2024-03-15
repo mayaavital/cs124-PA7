@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field
 
 import numpy as np
 import re
+import random
 
 from porter_stemmer import PorterStemmer
 
@@ -36,6 +37,11 @@ class Chatbot:
         self.ratings = ratings
         #self.binarized_ratings = self.binarize(self.ratings, threshold=2.5)
         self.ratings = self.binarize(self.ratings, threshold=2.5)
+        self.user_ratings = [0] * len(self.ratings)
+        self.datapoints = 0
+        self.cur = 0
+        self.k = 0
+        self.recommended = []
         ########################################################################
         #                             END OF YOUR CODE                         #
         ########################################################################
@@ -129,7 +135,6 @@ class Chatbot:
         # directly based on how modular it is, we highly recommended writing   #
         # code in a modular fashion to make it easier to improve and debug.    #
         ########################################################################
-        datapoints = 0
         no_movies_responses = ["Hmm, I don't recognize a movie title in what you just said. Would you please tell me about a movie you've seen recently?", "I'm not recognizing a movie title in what you said. Can you tell me about a film you've seen recently?", "Hmm, I didn't catch a movie title in what you said. Could you share some details about a recent movie you've seen?"]
         too_many_movies_responses = ["Please tell me about one movie at a time. Go ahead.", "Let's focus on one movie at a time. Please go ahead and tell me about one.", "Could you share details about one movie first? Feel free to start whenever you're ready."]
         invalid_movie_responses = ["Something like: I've never heard of {}, sorry... Tell me about another movie you liked.", "Hmm, {} doesn't ring a bell. Can you share details about another movie you enjoyed?", "I'm not familiar with {}, sorry about that. Can you tell me about another movie you're fond of?"]
@@ -137,50 +142,70 @@ class Chatbot:
         positive_sentiment_responses = ["Ok, you liked {}! Tell me what you thought of another movie.", "Alright, you enjoyed {}! How about sharing your thoughts on a different movie?", "Got it, you liked {}! Now, could you discuss your thoughts on another film?"]
         negative_sentiment_responses = ["I see, you didn't enjoy {}. Can you tell me about another movie you have a different opinion on?", "Noted, it seems you didn't find {} to your liking. Could you share your thoughts on a different movie?", "Understood, {} wasn't your cup of tea. Would you mind discussing another movie?"]
         recommendation_responses = ["Given what you told me, I think you would like {}. Would you like more recommendations? Please respond with either 'yes' or 'no'.", "Based on your preferences, it seems like {} would be a great fit for you. Would you be interested in exploring more recommendations? Please respond with either 'yes' or 'no'.", "From what you've shared, it appears that {} aligns well with your tastes. Are you open to receiving additional recommendations? Please respond with either 'yes' or 'no'."]
-
+        no_more_recommendations = ["Ok, would you like to tell me about more movies?", "Got it. How about you tell me about more movies instead?", "Ok, since you don't want more recommendations, tell me what you thought about more movies please."]
+        multiple_movie_responses = ["Can you specify your statement between {}?", "Please repeat your statement specifying between these movies: {}", "Can you please repeat what you said about one of these specific movies: {}?"]
+        
         if self.llm_enabled:
             response = "I processed {} in LLM Programming mode!!".format(line)
         else:
-            datapoints = 0
             movies = self.extract_titles(line)
-            movie_indices = self.find_movies_by_title(movies)
-            result = [0] * len(self.ratings)
-            if movies.size() == 0:
-                index = np.randint(1, 3)
+            if self.datapoints < 5 and len(movies) == 0 and line != "yes" and line != "no":
+                index = random.randint(0, 2)
                 response = no_movies_responses[index]
+            elif len(movies) > 1:
+                index = random.randint(0, 2)
+                response = too_many_movies_responses[index]
+            elif self.datapoints >= 5 and line == "yes":
+                if self.cur == self.k:
+                    self.k += 10
+                    self.recommended = self.recommend(self.user_ratings, self.ratings, k=self.k)
+                index = random.randint(0, 2)
+                entry = self.titles[self.recommended[self.cur]]
+                response = recommendation_responses[index].format(entry[0])
+                self.cur += 1
+            elif self.datapoints >= 5 and line == "no":
+                index = random.randint(0, 2)
+                response = no_more_recommendations[index]
+                self.datapoints = 0
+            elif self.datapoints >= 5:
+                response = "Please respond with either 'yes' or 'no."
             else:
-                if movie_indices.size() == 0:
-                    index = np.randint(1, 3)
+                movie_indices = self.find_movies_by_title(movies[0])
+                if len(movie_indices) == 0:
+                    index = random.randint(0, 2)
                     response = invalid_movie_responses[index].format(movies[0])
-                elif movie_indices.size() > 1:
-                    index = np.randint(1, 3)
-                    response = too_many_movies_responses[index]
                 else:
                     sentiment = self.extract_sentiment(line)
                     if sentiment == 0:
-                        index = np.randint(1, 3)
+                        index = random.randint(0, 2)
                         response = neutral_sentiment_responses[index].format(movies[0])
-                    if datapoints < 4:    
+                    elif len(movie_indices) > 1:
+                        index = random.randint(0, 2)
+                        options = []
+                        for i in range(len(movie_indices)):
+                            entry = self.titles[movie_indices[i]]
+                            options.append(entry[0])
+                        response = multiple_movie_responses[index].format(options)
+                    elif self.datapoints < 4:    
                         if sentiment == 1:
-                            index = np.randint(1, 3)
+                            index = random.randint(0, 2)
                             response = positive_sentiment_responses[index].format(movies[0])
-                            result[movies[0]] = 1
-                            datapoints += 1
+                            self.user_ratings[movie_indices[0]] = 1
+                            self.datapoints += 1
                         elif sentiment == -1:
-                            index = np.randint(1, 3)
+                            index = random.randint(0, 2)
                             response = negative_sentiment_responses[index].format(movies[0])
-                            result[movies[0]] = -1
-                            datapoints += 1
-                    else:
-                        recommended = self.recommend(result, self.ratings)
-                        index = np.randint(1, 3)
-                        response = recommendation_responses[index].format(recommended)
-                        
-
-
-
-
-            response = "I processed {} in Starter (GUS) mode!!".format(line)
+                            self.user_ratings[movie_indices[0]] = -1
+                            self.datapoints += 1
+                    elif self.datapoints >= 4:
+                        if self.cur == self.k:
+                            self.k += 10
+                            self.recommended = self.recommend(self.user_ratings, self.ratings, k=self.k)
+                        index = random.randint(0, 2)
+                        entry = self.titles[self.recommended[self.cur]]
+                        response = recommendation_responses[index].format(entry[0])
+                        self.cur += 1
+                        self.datapoints += 1
 
         ########################################################################
         #                          END OF YOUR CODE                            #

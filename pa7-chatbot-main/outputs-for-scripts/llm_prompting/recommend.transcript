@@ -1,0 +1,61 @@
+Welcome to Stanford CS124's
+ _______  _______       ___________
+|       ||   _   |      \          \
+|    _  ||  |_|  | ____  ------    /
+|   |_| ||       ||____|      /   /
+|    ___||       |           /   /       
+|   |    |   _   |          /   /      
+|___|    |__| |__|         /___/
+
+ _______  __   __  _______  _______  _______  _______  _______  __
+|       ||  | |  ||   _   ||       ||  _    ||       ||       ||  |
+|       ||  |_|  ||  |_|  ||_     _|| |_|   ||   _   ||_     _||  |
+|       ||       ||       |  |   |  |       ||  | |  |  |   |  |  |
+|      _||       ||       |  |   |  |  _   | |  |_|  |  |   |  |__|
+|     |_ |   _   ||   _   |  |   |  | |_|   ||       |  |   |   __
+|_______||__| |__||__| |__|  |___|  |_______||_______|  |___|  |__|
+
+
+        Your task is to implement the chatbot as detailed in the PA7
+        instructions.
+        Remember: in the GUS mode, movie names will come in quotation marks
+        and expressions of sentiment will be simple!
+        TODO: Write here the description for your own chatbot!
+        
+[96mmoviebot> [0mHow can I help you?
+> I liked "Titanic (1997)"
+
+[96mmoviebot> [0m Great, you liked "Titanic (1997)". Can you tell me about another movie you like or dislike? I'm here to talk about movies! Let's discuss your favorite films or genres.
+> I liked "10 Things I Hate About You"
+
+[96mmoviebot> [0m I see, you liked "10 Things I Hate About You". That's great! You've now mentioned 2 different movies. I'm here to help you discover new movies you might enjoy. Can you tell me about another movie you like or dislike?
+> I liked "She's the Man"
+
+[96mmoviebot> [0m  Interesting, you liked "She's the Man". You've now mentioned 3 different movies. I'm here to help you discover new movies you might enjoy. Can you tell me about another movie you like or dislike? 
+
+By the way, after you mention 5 different movies, I will proactively offer a recommendation based on those.
+> I liked "Sydney White"
+
+[96mmoviebot> [0m  I see, you liked "Sydney White". You've now mentioned 4 different movies. I'm here to help you discover new movies you might enjoy. Can you tell me about another movie you like or dislike? 
+
+Just one more movie and I'll be able to offer you a recommendation based on your preferences. 😊
+> I liked "Easy A"
+
+[96mmoviebot> [0m  Now that you've told me about 5 movies, would you like a recommendation based on those? I think you might enjoy "The DUFF" (2015). It's a comedy-drama film about a high school student who is labeled as the "Designated Ugly Fat Friend" and decides to take revenge on her bullies. The movie has a similar tone and style to "Easy A" and "10 Things I Hate About You", and I think you might find it entertaining. Would you like to watch "The DUFF"?
+> yes
+
+[96mmoviebot> [0m  Great, I'm glad you're interested in watching "The DUFF"! It's a fun and entertaining movie that I think you'll enjoy. Let me know if you need any help finding it or if you have any other questions about movies. 😊
+> yeah!
+
+[96mmoviebot> [0m   I'm glad to hear that! I hope you enjoy watching "The DUFF". If you have any other questions or if there's anything else I can help you with, just let me know. I'm here to assist you with all your movie-related needs. 😊
+> yes
+
+[96mmoviebot> [0m   Sure thing! I'm here to help. Do you have any specific questions about "The DUFF" or are you looking for recommendations for other movies? Let me know and I'll do my best to assist you. 😊
+> no
+
+[96mmoviebot> [0m    No problem! I'm glad I could help you find a movie you might enjoy. If you have any other questions or if there's anything else I can help you with, just let me know. I'm here to assist you with all your movie-related needs. 😊 
+
+Have a great day!
+> :quit
+
+[96mmoviebot> [0mHave a nice day!

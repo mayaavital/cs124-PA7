@@ -21,6 +21,12 @@ class EmotionDetector(BaseModel):
     Sadness: bool = Field(default=False)
     Surprise: bool = Field(default=False)
 
+class InputCategorizer(BaseModel):
+    is_movie_related: bool = Field(default=True)
+    is_general_inquiry: bool = Field(default=False)
+    is_assistance_request: bool = Field(default=False)
+    is_off_topic: bool = Field(default=False)
+
 # noinspection PyMethodMayBeStatic
 class Chatbot:
     """Simple class to implement the chatbot for PA 7."""
@@ -154,7 +160,11 @@ class Chatbot:
         multiple_movie_responses = ["Can you specify your statement between {}?", "Please repeat your statement specifying between these movies: {}", "Can you please repeat what you said about one of these specific movies: {}?"]
         
         if self.llm_enabled:
-            response = "I processed {} in LLM Programming mode!!".format(line)
+            system_prompt = """You are an input categorization bot. Determine if the input is related to movies. If not, """ +\
+            """identify if it's a general inquiry, a request for assistance, or an off-topic comment. Respond with a JSON object detailing the categories."""    
+            message = sentence
+            json_class = InputCategorizer
+            response = util.json_llm_call(system_prompt, message, json_class)
         else:
             movies = self.extract_titles(line)
             if self.datapoints < 5 and len(movies) == 0 and line != "yes" and line != "no":
@@ -338,6 +348,15 @@ class Chatbot:
         :param title: a string containing a movie title
         :returns: a list of indices of matching movies
         """
+
+        if self.llm_enabled:
+            system_prompt = """You are a movie recommender chatbot that specializes in movies across different languages. """ +\
+            """Read the user's sentence, and if it's about a movie, provide information or a recommendation. If the sentence """ +\
+            """is in German, Spanish, French, Danish, or Italian, translate the movie title to English and respond accordingly. """ +\
+            """If the input is not movie-related, use your knowledge to steer the conversation back to movies.\n\n"""
+            stop = ["\n"]
+            response = util.simple_llm_call(system_prompt, sentence, stop=stop)
+            return response
     
         articles = ['A', 'An', 'The']
         title_list = list(title.split(" "))
